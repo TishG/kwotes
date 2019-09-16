@@ -19,7 +19,7 @@ class MySelect extends React.Component {
     console.log(this.state.value);
     return (
       <section className="MySelect">
-        {loaded && categories ? (
+        {categoriesArr.length ? (
           <div id="my-select">
             <label htmlFor="category-select">
               Categories:
