@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//components
+import MySelect from "./components/MySelect";
+import Quote from "./components/Quote";
+
+class App extends React.Component {
+  state = {
+    loaded: false,
+    categories: [],
+    quote: null,
+    author: null
+  };
+  UNSAFE_componentWillMount() {
+    this.myFetch();
+  }
+  myFetch = () => {
+    fetch("http://quotes.rest/qod/categories.json")
+      .then((res) => res.json())
+      .then((data) => this.setState({ categories: data.contents.categories }))
+      .catch((err) => console.log(err));
+    this.setState({ loaded: true });
+  };
+  fetchCategory = (category) => {
+    fetch(`http://quotes.rest/qod.json?category=${category}`)
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          quote: data.contents.quotes[0].quote,
+          author: data.contents.quotes[0].author
+        })
+      )
+      .catch((err) => console.log(err));
+  };
+  render() {
+    console.log("QUOTE!", this.state.quote);
+    console.log("AUTHOR!", this.state.author);
+    return (
+      <div className="App">
+        <nav>
+          <h1>Kwotes</h1>
+        </nav>
+        <div className="app-instructions">
+          <h2>
+            Select a category to generate a <span className="kwote">Kwote</span>{" "}
+            of the day
+          </h2>
+          <small>Come back the tomorrow for new quotes!</small>
+        </div>
+        <MySelect
+          categories={this.state.categories}
+          loaded={this.state.loaded}
+          fetchCategory={this.fetchCategory}
+        />
+        <Quote quote={this.state.quote} author={this.state.author} />
+      </div>
+    );
+  }
 }
 
 export default App;

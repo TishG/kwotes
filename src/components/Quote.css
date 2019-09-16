@@ -1,0 +1,10 @@
+.Quote {
+  text-align: center;
+  width: 80%;
+  margin: 50px auto;
+  color: rgb(105, 105, 105);
+}
+
+.Quote p {
+  color: rgb(105, 105, 105);
+}
