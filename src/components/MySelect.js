@@ -1,9 +1,7 @@
 import React from "react";
 import "./MySelect.css";
 
-// const MySelect = ({ categories, loaded, fetchCategory }) => {
 class MySelect extends React.Component {
-  // const categoriesArr = Object.keys(categories);
   state = {
     value: null
   };
@@ -16,10 +14,9 @@ class MySelect extends React.Component {
   render() {
     const { categories, loaded } = this.props;
     const categoriesArr = Object.keys(categories);
-    console.log(this.state.value);
     return (
       <section className="MySelect">
-        {categoriesArr.length ? (
+        {loaded ? (
           <div id="my-select">
             <label htmlFor="category-select">
               Categories:

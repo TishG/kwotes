@@ -10,17 +10,20 @@ class App extends React.Component {
     loaded: false,
     categories: [],
     quote: null,
-    author: null
+    author: null,
+    errors: []
   };
   UNSAFE_componentWillMount() {
     this.myFetch();
   }
   myFetch = () => {
+    this.setState({ loaded: false });
     fetch("http://quotes.rest/qod/categories.json")
       .then((res) => res.json())
-      .then((data) => this.setState({ categories: data.contents.categories }))
-      .catch((err) => console.log(err));
-    this.setState({ loaded: true });
+      .then((data) =>
+        this.setState({ categories: data.contents.categories, loaded: true })
+      )
+      .catch((err) => this.setState({ errors: [...this.state.errors, err] }));
   };
   fetchCategory = (category) => {
     fetch(`http://quotes.rest/qod.json?category=${category}`)
@@ -31,11 +34,9 @@ class App extends React.Component {
           author: data.contents.quotes[0].author
         })
       )
-      .catch((err) => console.log(err));
+      .catch((err) => this.setState({ errors: [...this.state.errors, err] }));
   };
   render() {
-    console.log("QUOTE!", this.state.quote);
-    console.log("AUTHOR!", this.state.author);
     return (
       <div className="App">
         <nav>
@@ -50,8 +51,8 @@ class App extends React.Component {
         </div>
         <MySelect
           categories={this.state.categories}
-          loaded={this.state.loaded}
           fetchCategory={this.fetchCategory}
+          loaded={this.state.loaded}
         />
         <Quote quote={this.state.quote} author={this.state.author} />
       </div>

@@ -2,7 +2,6 @@ import React from "react";
 import "./Quote.css";
 
 const Quote = ({ quote, author }) => {
-  console.log("HEY", quote, author);
   return (
     <section className="Quote">
       {quote && author ? (
