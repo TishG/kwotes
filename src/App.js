@@ -11,7 +11,7 @@ class App extends React.Component {
     categories: [],
     quote: null,
     author: null,
-    errors: []
+    errors: {}
   };
   UNSAFE_componentWillMount() {
     this.myFetch();
@@ -23,7 +23,7 @@ class App extends React.Component {
       .then((data) =>
         this.setState({ categories: data.contents.categories, loaded: true })
       )
-      .catch((err) => this.setState({ errors: [...this.state.errors, err] }));
+      .catch((err) => this.setState({ errors: err }));
   };
   fetchCategory = (category) => {
     fetch(`https://quotes.rest/qod.json?category=${category}`)
@@ -34,9 +34,10 @@ class App extends React.Component {
           author: data.contents.quotes[0].author
         })
       )
-      .catch((err) => this.setState({ errors: [...this.state.errors, err] }));
+      .catch((err) => this.setState({ errors: err }));
   };
   render() {
+    console.log(this.state.errors);
     return (
       <div className="App">
         <nav>
