@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kwotes/static/css/main.0ed89e60.chunk.css",
-    "main.js": "/kwotes/static/js/main.e842e574.chunk.js",
-    "main.js.map": "/kwotes/static/js/main.e842e574.chunk.js.map",
+    "main.js": "/kwotes/static/js/main.7cdbba63.chunk.js",
+    "main.js.map": "/kwotes/static/js/main.7cdbba63.chunk.js.map",
     "runtime~main.js": "/kwotes/static/js/runtime~main.14aaedb8.js",
     "runtime~main.js.map": "/kwotes/static/js/runtime~main.14aaedb8.js.map",
     "static/js/2.fdada4e7.chunk.js": "/kwotes/static/js/2.fdada4e7.chunk.js",
     "static/js/2.fdada4e7.chunk.js.map": "/kwotes/static/js/2.fdada4e7.chunk.js.map",
     "index.html": "/kwotes/index.html",
-    "precache-manifest.c169204c24cb17e7e7ead1d415c6645f.js": "/kwotes/precache-manifest.c169204c24cb17e7e7ead1d415c6645f.js",
+    "precache-manifest.fd00213e9b74c342ddf15d5172bc374f.js": "/kwotes/precache-manifest.fd00213e9b74c342ddf15d5172bc374f.js",
     "service-worker.js": "/kwotes/service-worker.js",
     "static/css/main.0ed89e60.chunk.css.map": "/kwotes/static/css/main.0ed89e60.chunk.css.map"
   }
