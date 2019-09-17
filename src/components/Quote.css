@@ -1,3 +1,15 @@
+@media (max-width: 600px) {
+  .Quote {
+    width: 90%;
+  }
+}
+
+@media (min-width: 601px) {
+  .Quote {
+    width: 80%;
+  }
+}
+
 .Quote {
   text-align: center;
   width: 80%;
