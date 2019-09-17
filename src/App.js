@@ -45,7 +45,7 @@ class App extends React.Component {
         </nav>
         <div className="app-instructions">
           <h2>
-            Select a category to generate a <span className="kwote">Kwote</span>
+            Select a category to generate a <span className="kwote">Kwote</span>{" "}
             of the day
           </h2>
           <small>Come back tomorrow for new quotes!</small>
