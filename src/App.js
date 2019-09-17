@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   myFetch = () => {
     this.setState({ loaded: false });
-    fetch("http://quotes.rest/qod/categories.json")
+    fetch("https://quotes.rest/qod/categories.json")
       .then((res) => res.json())
       .then((data) =>
         this.setState({ categories: data.contents.categories, loaded: true })
@@ -26,7 +26,7 @@ class App extends React.Component {
       .catch((err) => this.setState({ errors: [...this.state.errors, err] }));
   };
   fetchCategory = (category) => {
-    fetch(`http://quotes.rest/qod.json?category=${category}`)
+    fetch(`https://quotes.rest/qod.json?category=${category}`)
       .then((res) => res.json())
       .then((data) =>
         this.setState({
