@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kwotes/static/css/main.afb81dac.chunk.css",
-    "main.js": "/kwotes/static/js/main.d8b8fdd1.chunk.js",
-    "main.js.map": "/kwotes/static/js/main.d8b8fdd1.chunk.js.map",
+    "main.js": "/kwotes/static/js/main.17b3face.chunk.js",
+    "main.js.map": "/kwotes/static/js/main.17b3face.chunk.js.map",
     "runtime~main.js": "/kwotes/static/js/runtime~main.14aaedb8.js",
     "runtime~main.js.map": "/kwotes/static/js/runtime~main.14aaedb8.js.map",
     "static/js/2.d820c5dc.chunk.js": "/kwotes/static/js/2.d820c5dc.chunk.js",
     "static/js/2.d820c5dc.chunk.js.map": "/kwotes/static/js/2.d820c5dc.chunk.js.map",
     "index.html": "/kwotes/index.html",
-    "precache-manifest.b95421c6ccc5b09aea69c1455d6b1308.js": "/kwotes/precache-manifest.b95421c6ccc5b09aea69c1455d6b1308.js",
+    "precache-manifest.f13e810ebef528776824038f29c15029.js": "/kwotes/precache-manifest.f13e810ebef528776824038f29c15029.js",
     "service-worker.js": "/kwotes/service-worker.js",
     "static/css/main.afb81dac.chunk.css.map": "/kwotes/static/css/main.afb81dac.chunk.css.map"
   }
