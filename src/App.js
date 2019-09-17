@@ -37,7 +37,6 @@ class App extends React.Component {
       .catch((err) => this.setState({ errors: err }));
   };
   render() {
-    console.log(this.state.errors);
     return (
       <div className="App">
         <nav>
