@@ -48,7 +48,7 @@ class App extends React.Component {
             Select a category to generate a <span className="kwote">Kwote</span>{" "}
             of the day
           </h2>
-          <small>Come back the tomorrow for new quotes!</small>
+          <small>Come back tomorrow for new quotes!</small>
         </div>
         <MySelect
           categories={this.state.categories}
