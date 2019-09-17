@@ -12,11 +12,11 @@ class MySelect extends React.Component {
     }
   };
   render() {
-    const { categories, loaded } = this.props;
+    const { categories} = this.props;
     const categoriesArr = Object.keys(categories);
     return (
       <section className="MySelect">
-        {loaded ? (
+        {categoriesArr.length ? (
           <div id="my-select">
             <label htmlFor="category-select">
               Categories:
