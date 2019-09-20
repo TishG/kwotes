@@ -7,23 +7,31 @@ import Quote from "./components/Quote";
 
 class App extends React.Component {
   state = {
-    loaded: false,
     categories: [],
-    quote: null,
-    author: null,
-    errors: {}
+    quote: "",
+    author: "",
+    errors: []
   };
   UNSAFE_componentWillMount() {
     this.myFetch();
   }
   myFetch = () => {
-    this.setState({ loaded: false });
     fetch("https://quotes.rest/qod/categories.json")
-      .then((res) => res.json())
+      .then((res) =>
+        res.status === 429
+          ? alert(
+              "Sorry, you have reached your limit of quotes for the day. Please come back tomorrow!"
+            )
+          : res.json()
+      )
       .then((data) =>
         this.setState({ categories: data.contents.categories, loaded: true })
       )
-      .catch((err) => this.setState({ errors: err }));
+      .catch((err) =>
+        this.state.errors.length
+          ? this.setState({ errors: [err, ...this.state.errors] })
+          : this.setState({ errors: [err] })
+      );
   };
   fetchCategory = (category) => {
     fetch(`https://quotes.rest/qod.json?category=${category}`)
@@ -34,7 +42,7 @@ class App extends React.Component {
           author: data.contents.quotes[0].author
         })
       )
-      .catch((err) => this.setState({ errors: err }));
+      .catch((err) => this.setState({ errors: [err] }));
   };
   render() {
     return (
@@ -47,12 +55,11 @@ class App extends React.Component {
             Select a category to generate a <span className="kwote">Kwote</span>{" "}
             of the day
           </h2>
-          <small>Come back tomorrow for new quotes!</small>
+          <small>Come back tomorrow for new kwotes!</small>
         </div>
         <MySelect
           categories={this.state.categories}
           fetchCategory={this.fetchCategory}
-          loaded={this.state.loaded}
         />
         <Quote quote={this.state.quote} author={this.state.author} />
       </div>

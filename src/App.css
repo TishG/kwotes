@@ -17,6 +17,7 @@
 
 .App .app-instructions {
   text-align: center;
+  width: 100%;
 }
 
 .App .app-instructions .kwote {

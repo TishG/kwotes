@@ -1,20 +1,24 @@
-@media (max-width: 600px) {
-  .Quote {
-    width: 90%;
-  }
+.Quote {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  padding: 0 2em;
+  margin: 50px auto;
+  color: rgb(105, 105, 105);
 }
 
-@media (min-width: 601px) {
+@media (min-width: 600px) and (max-width: 900px) {
   .Quote {
     width: 80%;
   }
 }
 
-.Quote {
-  text-align: center;
-  width: 80%;
-  margin: 50px auto;
-  color: rgb(105, 105, 105);
+@media (min-width: 901px) {
+  .Quote {
+    width: 60%;
+  }
 }
 
 .Quote p {

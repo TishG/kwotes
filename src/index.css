@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
 body,
 html {
-  padding: 0px;
-  margin: 0px;
   box-sizing: border-box;
-  min-height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: flex;
   font-family: "Source Sans Pro", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+  min-width: 300px;
 }
 
 body {
@@ -16,4 +20,3 @@ body {
 p {
   color: rgb(255, 255, 255);
 }
-
