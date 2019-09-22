@@ -4,21 +4,10 @@
   -webkit-box-sizing: border-box;
   text-align: center;
   width: 100%;
-  padding: 0 2em;
+  max-width: 700px;
+  padding: 0;
   margin: 50px auto;
   color: rgb(105, 105, 105);
-}
-
-@media (min-width: 600px) and (max-width: 900px) {
-  .Quote {
-    width: 80%;
-  }
-}
-
-@media (min-width: 901px) {
-  .Quote {
-    width: 60%;
-  }
 }
 
 .Quote p {
@@ -27,4 +16,11 @@
 
 blockquote {
   line-height: 40px;
+}
+
+/* spinner */
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
 }

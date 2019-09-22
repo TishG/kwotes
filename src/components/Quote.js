@@ -1,5 +1,6 @@
 import React from "react";
 import "./Quote.css";
+import Spinner from "./Spinner";
 
 const Quote = ({ quote, author }) => {
   return (
@@ -12,7 +13,7 @@ const Quote = ({ quote, author }) => {
           </p>
         </blockquote>
       ) : (
-        <h2>...waiting to generate a quote</h2>
+        <Spinner />
       )}
     </section>
   );

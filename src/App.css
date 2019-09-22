@@ -20,6 +20,11 @@
   width: 100%;
 }
 
+.App .app-instructions small {
+  /* color: rgb(255, 20, 147); */
+  color: rgb(199, 21, 133);
+}
+
 .App .app-instructions .kwote {
   color: rgb(70, 130, 180);
 }

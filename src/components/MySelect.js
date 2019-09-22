@@ -1,5 +1,6 @@
 import React from "react";
 import "./MySelect.css";
+import Spinner from "./Spinner";
 
 class MySelect extends React.Component {
   state = {
@@ -35,7 +36,7 @@ class MySelect extends React.Component {
             <button onClick={this.handleClick}>Generate</button>
           </div>
         ) : (
-          <p id="loading">...loading</p>
+          <Spinner />
         )}
       </section>
     );
