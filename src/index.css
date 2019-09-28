@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background-color: rgb(135, 206, 250);
+  background-color: rgba(135, 206, 250, 0.7);
 }
 
 p {

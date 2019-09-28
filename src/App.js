@@ -1,21 +1,22 @@
-import React from "react";
-import "./App.css";
+import React, { useState, useEffect } from "react";
 
 //components
 import MySelect from "./components/MySelect";
 import Quote from "./components/Quote";
+import Spinner from "./components/Spinner";
 
-class App extends React.Component {
-  state = {
-    categories: [],
-    quote: "",
-    author: "",
-    errors: []
-  };
-  UNSAFE_componentWillMount() {
-    this.myFetch();
-  }
-  myFetch = () => {
+//css
+import "./App.css";
+
+const App = () => {
+  const [loaded, setLoaded] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [date, setDate] = useState(null);
+
+  useEffect(() => {
     fetch("https://quotes.rest/qod/categories.json")
       .then((res) =>
         res.status === 429
@@ -24,47 +25,50 @@ class App extends React.Component {
             )
           : res.json()
       )
-      .then((data) =>
-        this.setState({ categories: data.contents.categories, loaded: true })
-      )
-      .catch((err) =>
-        this.state.errors.length
-          ? this.setState({ errors: [err, ...this.state.errors] })
-          : this.setState({ errors: [err] })
-      );
-  };
-  fetchCategory = (category) => {
+      .then((data) => {
+        setLoaded(true);
+        setCategories(data.contents.categories);
+      })
+      .catch((err) => {
+        errors.length ? setErrors([err, ...errors]) : setErrors([err]);
+      });
+    fetchCategory("inspire");
+    setDate(new Date().getFullYear())
+  }, [errors]);
+  const fetchCategory = (category) => {
     fetch(`https://quotes.rest/qod.json?category=${category}`)
       .then((res) => res.json())
-      .then((data) =>
-        this.setState({
-          quote: data.contents.quotes[0].quote,
-          author: data.contents.quotes[0].author
-        })
-      )
-      .catch((err) => this.setState({ errors: [err] }));
+      .then((data) => {
+        setQuote(data.contents.quotes[0].quote);
+        setAuthor(data.contents.quotes[0].author);
+      })
+      .catch((err) => setErrors([err]));
   };
-  render() {
-    return (
-      <div className="App">
-        <nav>
-          <h1>Kwotes</h1>
-        </nav>
-        <div className="app-instructions">
-          <h2>
-            Select a category to generate a <span className="kwote">Kwote</span>{" "}
-            of the day
-          </h2>
-          <small>Come back tomorrow for new kwotes!</small>
-        </div>
-        <MySelect
-          categories={this.state.categories}
-          fetchCategory={this.fetchCategory}
-        />
-        <Quote quote={this.state.quote} author={this.state.author} />
+  return (
+    <div className="App">
+      <nav>
+        <h1>Kwotes</h1>
+      </nav>
+      <div className="app-instructions">
+        <h2>
+          Select a category to generate a <span className="kwote">Kwote</span>{" "}
+          of the day
+        </h2>
+        <small>Come back tomorrow for new kwotes!</small>
       </div>
-    );
-  }
-}
+      {loaded ? (
+        <section className="categories-quote">
+          <MySelect categories={categories} fetchCategory={fetchCategory} />
+          <Quote quote={quote} author={author} />
+        </section>
+      ) : (
+        <Spinner />
+      )}
+      <footer>
+        <small> &copy; Kwotes {date}</small>
+      </footer>
+    </div>
+  );
+};
 
 export default App;
