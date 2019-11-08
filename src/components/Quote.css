@@ -5,9 +5,10 @@
   text-align: center;
   width: 100%;
   max-width: 700px;
-  padding: 0;
   margin: 50px auto;
   color: rgb(105, 105, 105);
+  background-image: url("https://images.unsplash.com/photo-1533628635777-112b2239b1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+  box-shadow: 0 0.1em 0.2em gray;
 }
 
 .Quote p {
@@ -16,6 +17,7 @@
 
 blockquote {
   line-height: 40px;
+  padding: 1em;
 }
 
 /* spinner */
@@ -23,4 +25,13 @@ blockquote {
   margin: 100px auto 0;
   width: 70px;
   text-align: center;
+}
+
+@media (max-width: 750px) {
+  .Quote {
+    max-width: 450px;
+  }
+  blockquote {
+    padding: 0.5em;
+  }
 }

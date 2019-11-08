@@ -33,7 +33,7 @@ const App = () => {
         errors.length ? setErrors([err, ...errors]) : setErrors([err]);
       });
     fetchCategory("inspire");
-    setDate(new Date().getFullYear())
+    setDate(new Date().getFullYear());
   }, [errors]);
   const fetchCategory = (category) => {
     fetch(`https://quotes.rest/qod.json?category=${category}`)
@@ -65,7 +65,7 @@ const App = () => {
         <Spinner />
       )}
       <footer>
-        <small> &copy; Kwotes {date}</small>
+        <small> Kwotes&nbsp;&copy; {date}</small>
       </footer>
     </div>
   );
