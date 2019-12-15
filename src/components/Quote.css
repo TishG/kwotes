@@ -6,9 +6,10 @@
   width: 100%;
   max-width: 700px;
   margin: 50px auto;
-  color: rgb(105, 105, 105);
+  color: rgba(105, 105, 105, 0.9);
   background-image: url("https://images.unsplash.com/photo-1533628635777-112b2239b1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
   box-shadow: 0 0.1em 0.2em gray;
+  z-index: 99;
 }
 
 .Quote p {
@@ -20,11 +21,9 @@ blockquote {
   padding: 1em;
 }
 
-/* spinner */
-.spinner {
-  margin: 100px auto 0;
-  width: 70px;
-  text-align: center;
+.overlay {
+  background-color: rgba(245, 245, 245, 0.5);
+  border-radius: 0.5em;
 }
 
 @media (max-width: 750px) {

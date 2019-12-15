@@ -15,7 +15,6 @@ const App = () => {
   const [author, setAuthor] = useState("");
   const [errors, setErrors] = useState([]);
   const [date, setDate] = useState(null);
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -33,7 +32,7 @@ const App = () => {
     };
 
     fetchCategories();
-    fetchCategory("inspire");
+    fetchCategory("funny");
     setDate(new Date().getFullYear());
   }, [errors]);
 
@@ -52,27 +51,27 @@ const App = () => {
 
   return (
     <div className="App">
-      <nav>
+      <header>
         <h1>Kwotes</h1>
-      </nav>
+      </header>
       <div className="app-instructions">
         <h2>
           Select a category to generate a <span className="kwote">Kwote</span>{" "}
           of the day
         </h2>
-        <small>Come back tomorrow for new kwotes!</small>
       </div>
       {loaded ? (
         <section className="categories-quote">
           <MySelect categories={categories} fetchCategory={fetchCategory} />
           <Quote quote={quote} author={author} />
+          <small>Come back tomorrow for new kwotes!</small>
         </section>
       ) : (
         <Spinner />
       )}
-      <footer>
-        <small> Kwotes&nbsp;&copy; {date}</small>
-      </footer>
+        <footer>
+          <small> Kwotes&nbsp;&copy; {date}</small>
+        </footer>
     </div>
   );
 };

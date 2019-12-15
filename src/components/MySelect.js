@@ -4,27 +4,44 @@ import React, { useState } from "react";
 import "./MySelect.css";
 
 const MySelect = ({ categories, fetchCategory }) => {
-  const [val, setVal] = useState(null);
-  const handleClick = (e) => {
-    if (val) {
-      fetchCategory(val);
-    }
-  };
+  const [val, setVal] = useState("funny");
+  const [displayElement, setDisplayElement] = useState(false);
   const categoriesArr = Object.keys(categories);
+  const handleSetVal = val => {
+    setVal(val);
+    setDisplayElement(false);
+    fetchCategory(val);
+  };
+  const renderMySelectOptions = () => {
+    return categoriesArr.map((category, i) => (
+      <div
+        className="my-select-option"
+        key={i}
+        title={category}
+        onClick={e => handleSetVal(e.target.title)}
+      >
+        {category}
+      </div>
+    ))
+  }
   return (
     <section className="MySelect">
       <div className="select-container">
-        <label htmlFor="category-select">
-          Categories:
-          <select id="category-select" onChange={(e) => setVal(e.target.value)}>
-            {categoriesArr.map((cat, i) => (
-              <option key={i} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button onClick={handleClick}>Generate</button>
+        <p className="my-select-label">Categories</p>
+        <div
+          className="my-select-element"
+          onClick={() => setDisplayElement(!displayElement)}
+          onChange={e => setVal(e.target.value)}
+        >
+          {val}
+          <ion-icon name={displayElement ? "arrow-dropup" : "arrow-dropdown" }></ion-icon>
+        </div>
+        <div
+          className="my-select-options"
+          style={displayElement ? { display: "block" } : { display: "none" }}
+        >
+          {renderMySelectOptions()}
+        </div>
       </div>
     </section>
   );
