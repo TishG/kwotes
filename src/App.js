@@ -17,33 +17,39 @@ const App = () => {
   const [date, setDate] = useState(null);
 
   useEffect(() => {
-    fetch("https://quotes.rest/qod/categories.json")
-      .then((res) =>
-        res.status === 429
-          ? alert(
-              "Sorry, you have reached your limit of quotes for the day. Please come back tomorrow!"
-            )
-          : res.json()
-      )
-      .then((data) => {
+    const fetchCategories = async () => {
+      try {
+        let res = await fetch("https://quotes.rest/qod/categories.json");
+        let data = await res.json();
+        if (res.status === 429)
+          alert(
+            "Sorry, you have reached your limit of quotes for the day. Please come back tomorrow!"
+          );
         setLoaded(true);
         setCategories(data.contents.categories);
-      })
-      .catch((err) => {
+      } catch (err) {
         errors.length ? setErrors([err, ...errors]) : setErrors([err]);
-      });
+      }
+    };
+
+    fetchCategories();
     fetchCategory("inspire");
     setDate(new Date().getFullYear());
   }, [errors]);
-  const fetchCategory = (category) => {
-    fetch(`https://quotes.rest/qod.json?category=${category}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setQuote(data.contents.quotes[0].quote);
-        setAuthor(data.contents.quotes[0].author);
-      })
-      .catch((err) => setErrors([err]));
+
+  const fetchCategory = async category => {
+    try {
+      let res = await fetch(
+        `https://quotes.rest/qod.json?category=${category}`
+      );
+      let data = await res.json();
+      setQuote(data.contents.quotes[0].quote);
+      setAuthor(data.contents.quotes[0].author);
+    } catch (err) {
+      setErrors([err]);
+    }
   };
+
   return (
     <div className="App">
       <nav>
