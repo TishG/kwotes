@@ -109,6 +109,7 @@ button:active {
     width: 100%;
   }
 }
+
 /* internet explorer specific styles */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .my-select-options {
