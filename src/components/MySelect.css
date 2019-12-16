@@ -109,3 +109,9 @@ button:active {
     width: 100%;
   }
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+.my-select-options {
+  margin-top: 0.25em;
+}
+}
