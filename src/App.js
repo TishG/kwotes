@@ -71,7 +71,7 @@ const App = () => {
       )}
         <footer>
           <small> Kwotes&nbsp;&copy; {date}</small>
-          <small>*Disclaimer: The Quotes on this website are not the thoughts and ideas of the creator of this site. All quotes are auto-generated from a public database system.</small>
+          <small>*Disclaimer: The quotes on this website are not the thoughts and ideas of the creator of this site. All quotes are auto-generated from a public database system.</small>
         </footer>
     </div>
   );

@@ -27,7 +27,6 @@ const MySelect = ({ categories, fetchCategory }) => {
   return (
     <section className="MySelect">
       <div className="select-container">
-        <p className="my-select-label">Categories</p>
         <div
           className="my-select-element"
           onClick={() => setDisplayElement(!displayElement)}
